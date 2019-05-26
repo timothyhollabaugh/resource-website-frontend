@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <meta name="google-signin-client_id" content="918184954544-jm1aufr31fi6sdjs1140p7p3rouaka14.apps.googleusercontent.com">
+    </head>
+    <body>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        <p id="id"></p>
+        <p id="name"></p>
+        <img id="image"></img>
+        <p id="email"></p>
+        <p id="token"></p>
+        <script>
+            function onSignIn(googleUser) {
+                var profile = googleUser.getBasicProfile();
+                console.log('ID: ' + profile.getId());
+                console.log('Name: ' + profile.getName());
+                console.log('Image URL: ' + profile.getImageUrl());
+                console.log('Email: ' + profile.getEmail());
+                console.log('Token:' + googleUser.getAuthResponse().id_token);
+
+                console.log("GoogleUser: ");
+                console.log(googleUser);
+                console.log("Basic Profile: ");
+                console.log(googleUser.getBasicProfile());
+                console.log("Auth response: ");
+                console.log(googleUser.getAuthResponse());
+
+                document.getElementById("id").innerHTML = profile.getId();
+                document.getElementById("name").innerHTML = profile.getName();
+                document.getElementById("image").src = profile.getImageUrl();
+                document.getElementById("email").innerHTML = profile.getEmail();
+                document.getElementById("token").innerHTML = googleUser.getAuthResponse().id_token;
+            }
+        </script>
+    </body>
+</html>
